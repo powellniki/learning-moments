@@ -1,0 +1,73 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .posts-container {
+    margin: 1rem 5rem 0rem 5rem;
+  }
+
+  .posts-container > h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .post {
+    background-color: var(--white);
+    margin: 0.25rem 0;
+    padding: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+  .underline {
+    border-top: solid rgb(186, 185, 185) 1px;
+  }
+
+
+  .post:hover {
+    background-color: rgb(231, 244, 243);
+    border-radius: 15px;
+    padding-bottom: 15px;
+  }
+
+  .post > * {
+    padding: 0.5rem;
+  }
+
+.post-body {
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+  .post-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+.post-info {
+    font-size: 12px;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.like-object{
+  margin-left: 90%;
+}
+
+.like-heart {
+  margin: 4px;
+}
+
+.like-count {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.post-topic {
+  color: rgb(58, 202, 202);
+}
