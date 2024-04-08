@@ -14,13 +14,14 @@ export const AllPosts = () => {
     const [likeCount, setLikecount] = useState(0)    
     const [selectedTopic, setSelectedTopic] = useState("")
     const [filteredTopics, setFilteredTopic] = useState([])
+    const [displayedPosts, setDisplayedPosts] = useState([])
 
 
     // get all post details from database
     useEffect(() => {
         getAllPosts().then(postArray => {
             setAllPosts(postArray)
-            console.log('post details set')
+            console.log('posts set')
         })
     },[])
 
@@ -34,6 +35,9 @@ export const AllPosts = () => {
             setFilteredTopic(allPosts)
         }
     }, [allPosts, selectedTopic])
+
+
+
 
 
     // display the like count for each post
@@ -50,9 +54,9 @@ export const AllPosts = () => {
     return (
         <div>
             <h2>All Posts</h2>
-            <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} filteredTopics={filteredTopics}/>
+            <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} setDisplayedPosts={setDisplayedPosts} filteredTopics={filteredTopics}/>
             <div>
-                {filteredTopics.map(post => {
+                {displayedPosts.map(post => {
                     return <Post post={post} likeCount={likeCount} key={post.id}/>
                 })}
             </div>

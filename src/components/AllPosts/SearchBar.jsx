@@ -3,7 +3,7 @@ import { getAllTopics } from "../../services/TopicServices.js"
 import "./SearchBar.css"
 
 
-export const SearchBar = ({allPosts, setSelectedTopic}) => {
+export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDisplayedPosts}) => {
     const [searchInput, setSearchInput] = useState("")
     const [topics, setTopics] = useState([])
     // const [displayedPosts, setDisplayedPosts] = useState([])
@@ -15,16 +15,16 @@ export const SearchBar = ({allPosts, setSelectedTopic}) => {
             setTopics(topicsArray)
             console.log('topics set')
         })
-        // const topicArray = allPosts.map(post => post.topic)
-        // setTopics(topicArray)
-        
     },[allPosts])
 
-//    // return post results for search input
-//    useEffect(() => {
-//         const foundPosts = filteredTopics.filter(post => post.title.toLowerCase().includes(searchInput.toLowerCase()))
-//         setDisplayedPosts(foundPosts)
-//     }, [searchInput, setDisplayedPosts])
+
+    // return post results for search input
+    useEffect(() => {
+        const searchedPosts = filteredTopics.filter(post => post.title.toLowerCase().includes(searchInput.toLowerCase()))
+        setDisplayedPosts(searchedPosts)
+    }, [searchInput, filteredTopics, setDisplayedPosts])
+
+
 
     return (
         <div key="navigation">
