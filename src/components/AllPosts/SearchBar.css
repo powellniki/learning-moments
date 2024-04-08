@@ -1,0 +1,17 @@
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topics-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    padding: 10px;
+}
