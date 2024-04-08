@@ -1,40 +1,30 @@
 import { useEffect, useState } from "react"
+import { getAllTopics } from "../../services/TopicServices.js"
 import "./SearchBar.css"
 
 
-export const SearchBar = ({allPosts}) => {
+export const SearchBar = ({allPosts, setSelectedTopic}) => {
     const [searchInput, setSearchInput] = useState("")
     const [topics, setTopics] = useState([])
-
-    const [displayedPosts, setDisplayedPosts] = useState([])
-    const [filteredTopics, setFilteredTopic] = useState([])
-    const [selectedTopic, setSelectedTopic] = useState([])
+    // const [displayedPosts, setDisplayedPosts] = useState([])
 
 
     // get all topics
     useEffect(() => {
-            const topicArray = allPosts.map(post => post.topic)
-            setTopics(topicArray)
+        getAllTopics().then(topicsArray => {
+            setTopics(topicsArray)
             console.log('topics set')
+        })
+        // const topicArray = allPosts.map(post => post.topic)
+        // setTopics(topicArray)
+        
     },[allPosts])
 
-    // // filter results by topic
-    // useEffect(() => {
-    //     if (selectedTopic > 0) {
-    //         const filteredTopicsArray = allPosts.filter(post => post.topic.id === selectedTopic)
-    //         setFilteredTopic(filteredTopicsArray)
-    //     } else {
-    //         setFilteredTopic(allPosts)
-    //     }
-    // }, [])
-
-    // // return post results for search input
-    // useEffect(() => {
-    //     const foundPosts = filteredTopics.filter(post => post.title.toLowerCase().includes(searchInput.toLowerCase()))
-    //     setDisplayedPosts(foundPosts)
-    // }, [searchInput])
-
-
+//    // return post results for search input
+//    useEffect(() => {
+//         const foundPosts = filteredTopics.filter(post => post.title.toLowerCase().includes(searchInput.toLowerCase()))
+//         setDisplayedPosts(foundPosts)
+//     }, [searchInput, setDisplayedPosts])
 
     return (
         <div key="navigation">

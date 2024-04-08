@@ -12,7 +12,8 @@ import { SearchBar } from "./SearchBar.jsx"
 export const AllPosts = () => {
     const [allPosts, setAllPosts] = useState([])
     const [likeCount, setLikecount] = useState(0)    
-
+    const [selectedTopic, setSelectedTopic] = useState("")
+    const [filteredTopics, setFilteredTopic] = useState([])
 
 
     // get all post details from database
@@ -22,6 +23,18 @@ export const AllPosts = () => {
             console.log('post details set')
         })
     },[])
+
+
+    // filter results by topic
+    useEffect(() => {
+        if (selectedTopic > 0) {
+            const filteredTopicsArray = allPosts.filter(post => post.topic.id === parseInt(selectedTopic))
+            setFilteredTopic(filteredTopicsArray)
+        } else {
+            setFilteredTopic(allPosts)
+        }
+    }, [allPosts, selectedTopic])
+
 
     // display the like count for each post
     useEffect(() => {
@@ -33,12 +46,13 @@ export const AllPosts = () => {
     },[allPosts])
 
 
+
     return (
         <div>
             <h2>All Posts</h2>
-            <SearchBar allPosts={allPosts}/>
+            <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} filteredTopics={filteredTopics}/>
             <div>
-                {allPosts.map(post => {
+                {filteredTopics.map(post => {
                     return <Post post={post} likeCount={likeCount} key={post.id}/>
                 })}
             </div>
