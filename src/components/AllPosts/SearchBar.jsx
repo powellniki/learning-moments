@@ -27,8 +27,8 @@ export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDispla
 
 
     return (
-        <div key="navigation">
-            <div>
+        <div key="filter-container">
+            <div className="dropdown">
                 <select onChange={(event) => setSelectedTopic(event.target.value)} id="topics">
                     <option value="0">all topics...</option>
                         {topics.map(topic => {
@@ -36,8 +36,8 @@ export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDispla
                         })} 
                 </select>
             </div>
-            <div>
-                <input onChange={(event) => {setSearchInput(event.target.value)}} value={searchInput} type="text" placeholder="search posts..."/>
+            <div className="searchbar">
+                <input onChange={(event) => {setSearchInput(event.target.value)}} value={searchInput} type="text" placeholder="search posts..." id="search-bar"/>
             </div>
         </div>
     )

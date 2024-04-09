@@ -1,3 +1,4 @@
+import "./Post.css"
 
 
 export const Post = ({post, likeCount}) => {
@@ -9,7 +10,7 @@ export const Post = ({post, likeCount}) => {
                 <div className="post-title">{post.title}</div>
                 <div className="post-body">{post.body}</div>
                 <div className="like-object">
-                    <button className="like-heart">♥</button>
+                    <button className="like-heart"> ♥ </button>
                     <span className="like-count">{likeCount}</span>
                 </div>
             </section>

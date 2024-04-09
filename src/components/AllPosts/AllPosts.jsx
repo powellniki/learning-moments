@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { getAllPosts } from "../../services/postServices.js"
 import { useEffect } from "react"
-import "./AllPosts.css"
-// import { SearchBar } from "./SearchBar.jsx"
 import { Post } from "./Post.jsx"
 import { SearchBar } from "./SearchBar.jsx"
-
+import "./AllPosts.css"
 
 
 
@@ -37,9 +35,6 @@ export const AllPosts = () => {
     }, [allPosts, selectedTopic])
 
 
-
-
-
     // display the like count for each post
     useEffect(() => {
         allPosts.map(post => {
@@ -52,10 +47,14 @@ export const AllPosts = () => {
 
 
     return (
-        <div>
-            <h2>All Posts</h2>
-            <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} setDisplayedPosts={setDisplayedPosts} filteredTopics={filteredTopics}/>
-            <div>
+        <div className="all-posts-home">
+            <div className="page-title">
+                <h2>All Posts</h2>
+            </div>
+            <div className="search-posts">
+                <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} setDisplayedPosts={setDisplayedPosts} filteredTopics={filteredTopics}/>
+            </div>
+            <div className="displayed-posts">
                 {displayedPosts.map(post => {
                     return <Post post={post} likeCount={likeCount} key={post.id}/>
                 })}
