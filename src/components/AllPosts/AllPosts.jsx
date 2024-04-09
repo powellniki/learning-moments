@@ -1,55 +1,64 @@
 import { useState } from "react"
-import { getPostDetails } from "../../services/postServices.js"
+import { getAllPosts } from "../../services/postServices.js"
 import { useEffect } from "react"
+import { Post } from "./Post.jsx"
+import { SearchBar } from "./SearchBar.jsx"
 import "./AllPosts.css"
 
 
 
-
 export const AllPosts = () => {
-    const [postDetails, setPostDetails] = useState([])
-    const [likeCount, setLikecount] = useState(0)
+    const [allPosts, setAllPosts] = useState([])
+    const [likeCount, setLikecount] = useState(0)    
+    const [selectedTopic, setSelectedTopic] = useState("")
+    const [filteredTopics, setFilteredTopic] = useState([])
+    const [displayedPosts, setDisplayedPosts] = useState([])
+
 
     // get all post details from database
     useEffect(() => {
-        getPostDetails().then(postArray => {
-            setPostDetails(postArray)
-            console.log('post details set')
+        getAllPosts().then(postArray => {
+            setAllPosts(postArray)
+            console.log('posts set')
         })
     },[])
-    
+
+
+    // filter results by topic
+    useEffect(() => {
+        if (selectedTopic > 0) {
+            const filteredTopicsArray = allPosts.filter(post => post.topic.id === parseInt(selectedTopic))
+            setFilteredTopic(filteredTopicsArray)
+        } else {
+            setFilteredTopic(allPosts)
+        }
+    }, [allPosts, selectedTopic])
+
+
     // display the like count for each post
     useEffect(() => {
-        postDetails.map(post => {
+        allPosts.map(post => {
             let count = post.likes.length
             setLikecount(count)
             console.log('like counts set')
         })
-    },[postDetails])
+    },[allPosts])
+
 
 
     return (
-        <div className="posts-container">
-            <h2>All Posts</h2>
-            <div className="posts">
-                {postDetails.map(postObject => {
-                    return (
-                        <div key={postObject.id} className="underline">
-                            <section className="post">
-                                <div className="post-info">@{postObject.user.userName}/ <span className="post-topic">{postObject.topic.name}</span></div>
-                                <div className="post-title">{postObject.title}</div>
-                                <div className="post-body">{postObject.body}</div>
-                                <div className="like-object">
-                                    <button className="like-heart">♥</button>
-                                    <span className="like-count">{likeCount}</span>
-                                </div>
-                            </section>
-                        </div>
-                    )
-                })}
-
+        <div className="all-posts-home">
+            <div className="page-title">
+                <h2>All Posts</h2>
             </div>
-
+            <div className="search-posts">
+                <SearchBar allPosts={allPosts} setSelectedTopic={setSelectedTopic} setDisplayedPosts={setDisplayedPosts} filteredTopics={filteredTopics}/>
+            </div>
+            <div className="displayed-posts">
+                {displayedPosts.map(post => {
+                    return <Post post={post} likeCount={likeCount} key={post.id}/>
+                })}
+            </div>
         </div>
     )
 }

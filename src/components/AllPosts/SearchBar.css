@@ -1,0 +1,36 @@
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 10px;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 10px;
+}
+
+#topics {
+    /* appearance: /* none; Remove default arrow */
+    padding: 5px; /* Add padding for better spacing */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius */
+    background-color: #f3eeee; /* Set background color */
+    font-size: 12px; /* Set font size */
+    width: 212.5px; /* Set width */
+}
+
+#search-bar {
+    padding: 5px; /* Add padding for better spacing */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius */
+    background-color: #f3eeee; /* Set background color */
+    font-size: 12px; /* Set font size */
+    width: 201px; /* Set width */
+    height: 17px;
+}
