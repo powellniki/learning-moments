@@ -6,7 +6,6 @@ import "./SearchBar.css"
 export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDisplayedPosts}) => {
     const [searchInput, setSearchInput] = useState("")
     const [topics, setTopics] = useState([])
-    // const [displayedPosts, setDisplayedPosts] = useState([])
 
 
     // get all topics

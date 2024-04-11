@@ -5,6 +5,14 @@ import { PostDetails } from "./PostDetails.jsx"
 
 export const Post = ({post, likeCount}) => {
 
+
+
+    const handleLike = () => {
+        console.log("liked!")
+        //will need to add functionality to this
+    }
+
+
     return (
         <div className="underline">
             <section className="post">
@@ -14,8 +22,8 @@ export const Post = ({post, likeCount}) => {
                     </Link>
                 <div className="post-body">{post.body}</div>
                 <div className="like-object">
-                    <button className="like-heart"> ♥ </button>
-                    <span className="like-count">{likeCount}</span>
+                    <button onClick={handleLike} className="like-heart"> ♥ </button>
+                    <span className="like-count">{post.likes.length}</span>
                 </div>
             </section>
         </div>

@@ -25,6 +25,11 @@ export const PostDetails = ({currentUser}) => {
         // will need to eventually add navigation to take us to edit post
     }
 
+    const handleLike = () => {
+        console.log("liked!")
+        //will need to add functionality to this
+    }
+
 
     return (
         <div>
@@ -38,7 +43,7 @@ export const PostDetails = ({currentUser}) => {
                     <div className="post-title">{post.title}</div>
                     <div className="post-info">{post.date}</div>
                     <p className="post-body">{post.body}</p>
-                    <div><span className="like-heart"> ♥ </span><span>{post.likes?.length}</span></div>
+                    <div><button onClick={handleLike} className="like-heart"> ♥ </button><span>{post.likes?.length}</span></div>
             </article>
             <div className="btn-edit-container">
                 {/* if the logged in user is the author of that post, the edit button should display */}

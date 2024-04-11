@@ -59,6 +59,10 @@
     border: none;
     background-color: transparent;
   }
+
+  .like-heart:hover {
+    color: rgb(170, 22, 61)
+  }
     
   .like-count {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
