@@ -6,7 +6,6 @@ import "./SearchBar.css"
 export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDisplayedPosts}) => {
     const [searchInput, setSearchInput] = useState("")
     const [topics, setTopics] = useState([])
-    // const [displayedPosts, setDisplayedPosts] = useState([])
 
 
     // get all topics
@@ -27,12 +26,12 @@ export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDispla
 
 
     return (
-        <div key="filter-container">
+        <div>
             <div className="dropdown">
                 <select onChange={(event) => setSelectedTopic(event.target.value)} id="topics">
                     <option value="0">all topics...</option>
                         {topics.map(topic => {
-                            return <option key="topic-info" value={topic.id}>{topic.name}</option>
+                            return <option key={topic.id}>{topic.name}</option>
                         })} 
                 </select>
             </div>

@@ -1,0 +1,73 @@
+
+.post-header {
+    display: flex;
+}
+
+
+.btn-back {
+    background-color: rgb(227, 223, 223);
+    border: 1px rgb(227, 223, 223) solid;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 100px;
+}
+
+.btn-edit {
+  margin-left: 75%;
+}
+
+.post {
+    background-color: var(--white);
+    margin: 0.25rem 0;
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .post > * {
+    padding: 0.5rem;
+  }
+    
+  .post-body {
+    font-size: .875rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.25rem;
+  }
+    
+  .post-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+    
+  .post-info {
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+    
+    
+  .post-topic {
+    color: rgb(172, 198, 198);
+  }
+
+  .post:hover {
+    background-color: transparent;
+  }
+
+  .like-heart {
+    font-size: 20px;
+    color: tomato;
+    border: none;
+    background-color: transparent;
+  }
+
+  .like-heart:hover {
+    color: rgb(170, 22, 61)
+  }
+    
+  .like-count {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  
+    

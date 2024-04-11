@@ -2,6 +2,8 @@ import { Routes, Route, Outlet } from "react-router-dom"
 import { AllPosts } from "../components/AllPosts/AllPosts.jsx"
 import { NavigationBar } from "../components/NavigationBar/NavigationBar.jsx"
 import { useEffect, useState } from "react"
+import { PostDetails } from "../components/AllPosts/PostDetails.jsx"
+import { NewPost } from "../components/NewPost/NewPost.jsx"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -22,10 +24,19 @@ export const ApplicationViews = () => {
             >
                 <Route index element={<AllPosts />} />
 
-                <Route path="AllPosts" element={<AllPosts />} />
+                <Route path="AllPosts">
+                    {/* <Route index element={<AllPosts />} /> */}
+                    <Route path=":postId" element={<PostDetails currentUser={currentUser} />}/>
+                </Route>
+
                 <Route path="profile" element={<>My Profile</>} />
-                <Route path="posts" element={<>My Posts</>} />
+
+                <Route path="NewPost" element={<NewPost currentUser={currentUser} />} />
+
+
                 <Route path="newpost" element={<>Create Post Here</>} />
+                    
+
                 <Route path="favorites" element={<>Favorite Posts</>} />
             </Route>
         </Routes>
