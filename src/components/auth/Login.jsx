@@ -18,6 +18,7 @@ export const Login = () => {
           "learning_user",
           JSON.stringify({
             id: user.id,
+            userName: user.userName
           })
         )
 
