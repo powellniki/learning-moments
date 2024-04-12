@@ -50,7 +50,6 @@ export const NewPost = ({currentUser}) => {
                     <input type="text" name="title" required></input>
                 </div>
             </fieldset>
-            
         </form>
 
     )

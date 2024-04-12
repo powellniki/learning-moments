@@ -35,15 +35,6 @@ export const AllPosts = () => {
     }, [allPosts, selectedTopic])
 
 
-    // display the like count for each post
-    useEffect(() => {
-        allPosts.map(post => {
-            let count = post.likes.length
-            setLikecount(count)
-            console.log('like counts set')
-        })
-    },[allPosts])
-
 
 
     return (
@@ -56,7 +47,7 @@ export const AllPosts = () => {
             </div>
             <div className="displayed-posts">
                 {displayedPosts.map(post => {
-                    return <Post post={post} likeCount={likeCount} key={post.id}/>
+                    return <Post post={post} key={post.id}/>
                 })}
             </div>
         </div>

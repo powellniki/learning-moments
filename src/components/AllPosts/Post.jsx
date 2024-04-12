@@ -3,14 +3,8 @@ import "./Post.css"
 import { PostDetails } from "./PostDetails.jsx"
 
 
-export const Post = ({post, likeCount}) => {
+export const Post = ({ post }) => {
 
-
-
-    const handleLike = () => {
-        console.log("liked!")
-        //will need to add functionality to this
-    }
 
 
     return (
@@ -22,7 +16,7 @@ export const Post = ({post, likeCount}) => {
                     </Link>
                 <div className="post-body">{post.body}</div>
                 <div className="like-object">
-                    <button onClick={handleLike} className="like-heart"> ♥ </button>
+                    <button className="like-heart"> ♥ </button>
                     <span className="like-count">{post.likes.length}</span>
                 </div>
             </section>
