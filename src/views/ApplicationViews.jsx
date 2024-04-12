@@ -4,6 +4,7 @@ import { NavigationBar } from "../components/NavigationBar/NavigationBar.jsx"
 import { useEffect, useState } from "react"
 import { PostDetails } from "../components/AllPosts/PostDetails.jsx"
 import { NewPost } from "../components/NewPost/NewPost.jsx"
+import { MyPosts } from "../components/MyPosts/MyPosts.jsx"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -31,10 +32,10 @@ export const ApplicationViews = () => {
 
                 <Route path="profile" element={<>My Profile</>} />
 
-                <Route path="NewPost" element={<NewPost currentUser={currentUser} />} />
+                <Route path="newpost" element={<NewPost currentUser={currentUser} />} />
 
 
-                <Route path="newpost" element={<>Create Post Here</>} />
+                <Route path="myposts" element={<MyPosts currentUser={currentUser}/>} />
                     
 
                 <Route path="favorites" element={<>Favorite Posts</>} />

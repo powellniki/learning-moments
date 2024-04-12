@@ -4,7 +4,7 @@
   border-top: solid rgb(186, 185, 185) 1px;
 }
 
-.post:hover {
+.all-post:hover {
   background-color: rgb(231, 244, 243);
   border-radius: 15px;
   padding-bottom: 15px;
@@ -17,5 +17,6 @@
 }
 
 .page-title > h2 {
-  font-size: 60px;
+  font-size: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

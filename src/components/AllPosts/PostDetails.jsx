@@ -32,6 +32,7 @@ export const PostDetails = ({currentUser}) => {
         }
         postLikes(newLike)
         getAndSetPost()
+        // eventually this will navigate to favorites page
     }
 
     const handleDislike = () => {
@@ -51,7 +52,6 @@ export const PostDetails = ({currentUser}) => {
         <div>
             <article className="post">
                 <div className="post-header">
-                    <span><button className="btn-back">←</button></span>
                     <div>
                         <span className="post-info">@{post.user?.userName}/<span className="post-topic">{post.topic?.name}</span></span>
                     </div>
@@ -60,10 +60,10 @@ export const PostDetails = ({currentUser}) => {
                 <div className="post-info">{post.date}</div>
                 <p className="post-body">{post.body}</p>
                 <div>
-                    {/* if the logged in user has not yet liked post, they can like it and count goes up by 1*/}
+                    {/* if the logged in user is not the author of the post, they can like it and count goes up by 1*/}
                     {currentUser.id !== post?.userId ? <button onClick={handleLike}> ⇧ </button> : "⇧"}
-                    <span>{post.likes?.length}</span>
-                    {/* if the logged in user has not yet liked post, they can like it and count goes up by 1*/}
+                        <span>{post.likes?.length}</span>
+                    {/* if the logged in user is not the author of the post, they can like it and count goes up by 1*/}
                     {currentUser.id !== post?.userId ? <button onClick={handleDislike}> ⇩ </button> : "⇩"}
                     {/* if the logged in user has liked post, they can unlike it and count goes down by 1*/}
                 </div>

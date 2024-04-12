@@ -8,8 +8,7 @@ import "./AllPosts.css"
 
 
 export const AllPosts = () => {
-    const [allPosts, setAllPosts] = useState([])
-    const [likeCount, setLikecount] = useState(0)    
+    const [allPosts, setAllPosts] = useState([])  
     const [selectedTopic, setSelectedTopic] = useState("")
     const [filteredTopics, setFilteredTopic] = useState([])
     const [displayedPosts, setDisplayedPosts] = useState([])
@@ -19,14 +18,13 @@ export const AllPosts = () => {
     useEffect(() => {
         getAllPosts().then(postArray => {
             setAllPosts(postArray)
-            console.log('posts set')
         })
     },[])
 
 
     // filter results by topic
     useEffect(() => {
-        if (selectedTopic > 0) {
+        if (parseInt(selectedTopic) > 0) {
             const filteredTopicsArray = allPosts.filter(post => post.topic.id === parseInt(selectedTopic))
             setFilteredTopic(filteredTopicsArray)
         } else {
