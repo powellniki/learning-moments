@@ -28,7 +28,8 @@ export const NewPost = ({currentUser}) => {
     },[])
 
 
-    const handlePost = () => {
+    const handlePost = (event) => {
+        event.preventDefault()
 
         const newPost = {
             title: title,
@@ -37,10 +38,10 @@ export const NewPost = ({currentUser}) => {
             userId: currentUser.id,
             topicId: topicChoice
         }
-        postPost(newPost)
-        window.alert("Your post was created!")
-            //this will eventually need to navigate back to the "MyPosts" page
-        }
+        postPost(newPost).then(() => {
+             navigate(`/myposts`)
+        })
+    }
     
 
     return (

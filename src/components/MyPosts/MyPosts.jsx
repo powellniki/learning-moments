@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./MyPosts.css"
-import { getAllPosts } from "../../services/postServices.js"
+import { deletePost, getAllPosts } from "../../services/postServices.js"
 import { Link } from "react-router-dom"
 
 
@@ -13,11 +13,11 @@ export const MyPosts = ({currentUser}) => {
             const filteredPosts = postArray.filter(post => post.userId === currentUser.id)
             setUserPosts(filteredPosts)
         })
-    }, [currentUser.id])
+    }, [currentUser.id, userPosts])
 
 
-    const handleDelete = () => {
-        deletePost(post.id)
+    const handleDelete = (postId) => {
+        deletePost(postId)
         console.log("post deleted")
     }
 
@@ -31,7 +31,7 @@ export const MyPosts = ({currentUser}) => {
                             <Link to={`/AllPosts/${post.id}`}>
                                 <div className="post-title">{post.title}</div>
                             </Link>
-                            <div><button className="btn-delete" onClick={handleDelete}>DELETE</button></div>
+                            <div><button className="btn-delete" onClick={() => {handleDelete(post.id)}}>DELETE</button></div>
                         </section>
                     )
                 })}
