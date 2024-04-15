@@ -1,0 +1,42 @@
+.user-posts > h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.post-title {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the same color as the surrounding text */
+    cursor: pointer; 
+    font-size: .875rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.25rem;
+}
+
+.post-item {
+    padding: 20px;
+    margin: 10px 5px 10px 5px;
+    border: gainsboro 1px dotted;
+}
+
+.post-item:hover {
+    background-color: rgb(231, 244, 243);
+}
+
+.btn-delete {
+    display: flex;
+    font-size: .875rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: auto;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 30px;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete:hover {
+    font-size: .925rem;
+}

@@ -1,0 +1,23 @@
+
+
+.new-post-form > h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.form-item, .btn-post {
+    padding: 5px 0 10px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+textarea {
+    width: 95%;
+    height: 300px;
+    font-size: .875rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.25rem;
+}
+

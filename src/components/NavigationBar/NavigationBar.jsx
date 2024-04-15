@@ -13,7 +13,7 @@ export const NavigationBar = () => {
                 <Link to="/profile">MY PROFILE</Link>
             </li>
             <li className="nav-item">
-                <Link to="/posts">MY POSTS</Link>
+                <Link to="/myposts">MY POSTS</Link>
             </li>
             <li className="nav-item">
                 <Link to="/newpost">NEW POST</Link>

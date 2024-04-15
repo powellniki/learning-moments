@@ -12,7 +12,6 @@ export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDispla
     useEffect(() => {
         getAllTopics().then(topicsArray => {
             setTopics(topicsArray)
-            console.log('topics set')
         })
     },[allPosts])
 
@@ -31,7 +30,7 @@ export const SearchBar = ({allPosts, setSelectedTopic, filteredTopics, setDispla
                 <select onChange={(event) => setSelectedTopic(event.target.value)} id="topics">
                     <option value="0">all topics...</option>
                         {topics.map(topic => {
-                            return <option key={topic.id}>{topic.name}</option>
+                            return <option value={topic.id} key={topic.id}>{topic.name}</option>
                         })} 
                 </select>
             </div>

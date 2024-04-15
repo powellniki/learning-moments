@@ -35,6 +35,9 @@
   }
     
   .post-title {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the same color as the surrounding text */
+    cursor: pointer; 
     font-size: 18px;
     font-weight: bold;
   }

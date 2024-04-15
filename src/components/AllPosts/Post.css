@@ -1,11 +1,11 @@
-.post {
+.all-post {
   background-color: var(--white);
   margin: 0.25rem 0;
   padding: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.post > * {
+.all-post > * {
   padding: 0.5rem;
 }
   
@@ -16,6 +16,9 @@
 }
   
 .post-title {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the same color as the surrounding text */
+  cursor: pointer; 
   font-size: 18px;
   font-weight: bold;
 }
