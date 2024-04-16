@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { getPostByPostId } from "../../services/postServices.js"
+import { postLikes } from "../../services/LikeServices.js"
 import "./Post.css"
 import "./PostDetails.css"
-import { postLikes } from "../../services/LikeServices.js"
 
 
 export const PostDetails = ({currentUser}) => {
     const [post, setPost] = useState({})
 
     const {postId} = useParams()
+    const navigate = useNavigate()
 
 
     const getAndSetPost = () => {
@@ -42,8 +43,7 @@ export const PostDetails = ({currentUser}) => {
     
 
     const handleEdit = () => {
-        console.log("edit button clicked!")
-        // will need to eventually add navigation to take us to edit post
+        navigate(`/`)
     }
 
 
@@ -70,7 +70,11 @@ export const PostDetails = ({currentUser}) => {
             </article>
             <div className="btn-edit-container">
                 {/* if the logged in user is the author of that post, the edit button should display */}
-                {currentUser.id === post?.userId ? <button onClick={handleEdit} className="btn-edit">Edit Post</button> : ""}
+                {currentUser.id === post?.userId ? 
+                    <Link to={`/AllPosts/edit/${post.id}`}>
+                        <button onClick={handleEdit} className="btn-edit">Edit Post</button>
+                    </Link>
+                 : ""}
             </div>
         </div>
 

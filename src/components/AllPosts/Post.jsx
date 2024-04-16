@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom"
 import "./Post.css"
-import { PostDetails } from "./PostDetails.jsx"
 
 
-export const Post = ({ post }) => {
+export const Post = ({post}) => {
 
 
 
     return (
         <div className="underline">
             <section className="all-post">
-                <div className="post-info">@{post.user.userName}/ <span className="post-topic">{post.topic.name}</span></div>
+                <div className="post-info">@{post.user?.userName}/ <span className="post-topic">{post.topic?.name}</span></div>
                     <Link to={`/AllPosts/${post.id}`}>
                         <div className="post-title">{post.title}</div>
                     </Link>
