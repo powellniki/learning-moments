@@ -9,6 +9,12 @@ export const getPostByPostId = (postId) => {
 }
 
 
+export const getPostByUserLikes = (currentUser) => {
+    return fetch(`http://localhost:8088/likes?userId=${currentUser.id}&_expand=post`).then((res) => res.json())
+}
+
+
+
 export const postPost = (newPost) => {
     return fetch('http://localhost:8088/posts', {
         method: "POST",

@@ -13,7 +13,7 @@ export const MyPosts = ({currentUser}) => {
             const filteredPosts = postArray.filter(post => post.userId === currentUser.id)
             setUserPosts(filteredPosts)
         })
-    }, [currentUser.id, userPosts])
+    }, [currentUser.id])
 
 
     const handleDelete = (postId) => {

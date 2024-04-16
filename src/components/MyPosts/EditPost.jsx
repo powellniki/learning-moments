@@ -19,17 +19,11 @@ const setDate = () => {
 
 export const EditPost = ({currentUser}) => {
     const [topics, setAllTopics] = useState([])
-    const [topicChoice, setTopicChoice] = useState(0)
-    const [title, setTitle] = useState("")
-    const [body, setBody] = useState("")
-
     const [post, setPost] = useState({})
 
     const {postId} = useParams()
     const navigate = useNavigate()
 
-
-    
     
     
     // define new function to get post information based off postId

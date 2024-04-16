@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
-import { getPostByPostId } from "../../services/postServices.js"
+import { getPostByPostId, getPostByUserLikes } from "../../services/postServices.js"
 import { postLikes } from "../../services/LikeServices.js"
 import "./Post.css"
 import "./PostDetails.css"
@@ -8,6 +8,7 @@ import "./PostDetails.css"
 
 export const PostDetails = ({currentUser}) => {
     const [post, setPost] = useState({})
+    const [userLikes, setUserLikes] = useState([])
 
     const {postId} = useParams()
     const navigate = useNavigate()
@@ -20,9 +21,19 @@ export const PostDetails = ({currentUser}) => {
         }) 
     }
 
+    const getAndSetUserLikes = () => {
+        getPostByUserLikes(currentUser).then(likesArray => {
+            setUserLikes(likesArray)
+        })
+    }
+
     useEffect(() => {
         getAndSetPost()
-    }, [])
+        getAndSetUserLikes()
+    }, [currentUser])
+
+    
+
 
     // when the user clicks the LIKE button, the count should increase by 1
     const handleLike = () => {
@@ -31,16 +42,16 @@ export const PostDetails = ({currentUser}) => {
             userId: currentUser.id,
             postId: post.id
         }
-        postLikes(newLike)
-        getAndSetPost()
+
+        if (currentUser.id !== userLikes?.userId) {
+            postLikes(newLike)
+            getAndSetPost()
+        } else {
+            window.alert("you have already liked this post")
+        }
         // eventually this will navigate to favorites page
     }
 
-    const handleDislike = () => {
-        console.log("disliked!")
-        //will need to add functionality to this
-    }
-    
 
     const handleEdit = () => {
         navigate(`/`)
@@ -60,12 +71,8 @@ export const PostDetails = ({currentUser}) => {
                 <div className="post-info">{post.date}</div>
                 <p className="post-body">{post.body}</p>
                 <div>
-                    {/* if the logged in user is not the author of the post, they can like it and count goes up by 1*/}
-                    {currentUser.id !== post?.userId ? <button onClick={handleLike}> ⇧ </button> : "⇧"}
-                        <span>{post.likes?.length}</span>
-                    {/* if the logged in user is not the author of the post, they can like it and count goes up by 1*/}
-                    {currentUser.id !== post?.userId ? <button onClick={handleDislike}> ⇩ </button> : "⇩"}
-                    {/* if the logged in user has liked post, they can unlike it and count goes down by 1*/}
+                    {currentUser.id !== post?.userId ? <button onClick={handleLike}> ⇧ </button> : ""}
+                    <span>{post.likes?.length}</span>
                 </div>
             </article>
             <div className="btn-edit-container">
