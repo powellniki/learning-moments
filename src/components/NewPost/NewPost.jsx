@@ -13,19 +13,21 @@ import "./NewPost.css"
         return `${month}/${day}/${year}`
     }
 
+
 export const NewPost = ({currentUser}) => {
     const [topics, setAllTopics] = useState([])
     const [topicChoice, setTopicChoice] = useState(0)
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-
     const navigate = useNavigate()
+
 
     useEffect(() => {
         getAllTopics().then(topicsArray => {
             setAllTopics(topicsArray)
         }) 
     },[])
+
 
 
     const handlePost = (event) => {
@@ -42,6 +44,7 @@ export const NewPost = ({currentUser}) => {
              navigate(`/myposts`)
         })
     }
+    
     
 
     return (
