@@ -8,7 +8,8 @@ import "./PostDetails.css"
 
 export const PostDetails = ({currentUser}) => {
     const [post, setPost] = useState({})
-    const [userLikes, setUserLikes] = useState([])
+    const [likesExpandPost, setLikesExpandPost] = useState([])
+
 
     const {postId} = useParams()
     const navigate = useNavigate()
@@ -21,19 +22,27 @@ export const PostDetails = ({currentUser}) => {
         }) 
     }
 
-    const getAndSetUserLikes = () => {
-        getPostByUserLikes(currentUser).then(likesArray => {
-            setUserLikes(likesArray)
+    const getLikesForPost = () => {
+        getPostByUserLikes(postId).then(likesArray => {
+            setLikesExpandPost(likesArray)
         })
     }
 
     useEffect(() => {
         getAndSetPost()
-        getAndSetUserLikes()
+        getLikesForPost()
     }, [currentUser])
 
     
+    const checkIfLiked = () => {
+        const likedByCurrentUser = likesExpandPost.some(like => like.userId === currentUser.id)
 
+        if (!likedByCurrentUser) {
+            handleLike()
+        } else {
+            window.alert('you have already liked this post!')
+        }
+    }
 
     // when the user clicks the LIKE button, the count should increase by 1
     const handleLike = () => {
@@ -42,14 +51,7 @@ export const PostDetails = ({currentUser}) => {
             userId: currentUser.id,
             postId: post.id
         }
-
-        if (currentUser.id !== userLikes?.userId) {
-            postLikes(newLike)
-            getAndSetPost()
-        } else {
-            window.alert("you have already liked this post")
-        }
-        // eventually this will navigate to favorites page
+        postLikes(newLike).then(getAndSetPost()).then(getLikesForPost())
     }
 
 
@@ -64,14 +66,17 @@ export const PostDetails = ({currentUser}) => {
             <article className="post">
                 <div className="post-header">
                     <div>
-                        <span className="post-info">@{post.user?.userName}/<span className="post-topic">{post.topic?.name}</span></span>
+                        <Link to={`/user/${post.userId}`}>
+                            <span className="post-info">@{post.user?.userName}/ </span>
+                        </Link>
+                        <span className="post-topic">{post.topic?.name}</span>
                     </div>
                 </div>
                 <div className="post-title">{post.title}</div>
                 <div className="post-info">{post.date}</div>
                 <p className="post-body">{post.body}</p>
                 <div>
-                    {currentUser.id !== post?.userId ? <button onClick={handleLike}> ⇧ </button> : ""}
+                    {currentUser.id !== post?.userId ? <button onClick={checkIfLiked}> ⇧ </button> : ""}
                     <span>{post.likes?.length}</span>
                 </div>
             </article>
